@@ -49,14 +49,73 @@ class Warrior(Character):
     def __init__(self, name, attack = 30, health = 120):
         super().__init__(name, attack, health)
 
+    def ability(self):
+        print("1. Slash")
+        print("2. Bash")
+        choice = input("Choice your attack")
+        return choice
+
+    def use_ability(self, choice, target):
+        if choice == "1":
+            damage = int(self.attack * 2)
+            target.health -= damage
+            print(f"Slash! Deals {damage} damage!")
+        elif choice == "2":
+            damage = int(self.attack * 1.5)
+            target.health -= damage
+            print(f"Bash! Deals {damage} damage!")
+
 class Mage(Character):
     def __init__(self, name, attack = 15, health = 85, mana = 200):
         super().__init__(name, attack, health)
         self.mana = mana
 
+    def ability(self):
+        print("1. Fireball")
+        print("2. Waterball")
+        choice = input("Choice your attack")
+        return choice
+
+    def use_ability(self, choice, target):
+        if choice == "1":
+            if self.mana >= 30:
+                damage = int(self.attack * 2)
+                target.health -= damage
+                self.mana -= 30
+                print(f"Fireball! Deals {damage} damage! Mana: {self.mana}")
+            else:
+                print("Not enough mana!")
+        elif choice == "2":
+            if self.mana >= 15:
+                damage = int(self.attack * 1.2)
+                target.health -= damage
+                self.mana -= 15
+                print(f"Waterball! Deals {damage} damage! Mana: {self.mana}")
+            else:
+                print("Not enough mana!")
+
 class Archer(Character):
     def __init__(self, name, attack = 20, health = 100):
         super().__init__(name, attack, health)
+
+    def ability(self):
+        print("1. Power shot")
+        print("2. Mult shot")
+        choice = input("Choice your attack")
+        return choice
+
+    def use_ability(self, choice, target):
+        if choice == "1":
+            damage = int(self.attack * 1.75)
+            target.health -= damage
+            print(f"Power Shot! Deals {damage} damage!")
+        elif choice == "2":
+            total = 0
+            for i in range(3):
+                damage = int(self.attack * 0.5)
+                target.health -= damage
+                total += damage
+            print(f"Multi Shot! 3 arrows for {total} total damage!")
 
 def first_menu():
     print("1. Warrior")
@@ -73,21 +132,26 @@ def battle(player, enemy):
     while player.is_alive() and enemy.is_alive():
         print(f"\n--- Battle: {player.name} vs {enemy.name} ---")
         print("1. Attack")
-        print("2. Items")
-        print("3. Show Inventory")
-        print("4. Exit")
+        print("2. Ability")
+        print("3. Items")
+        print("4. Show Inventory")
+        print("5. Exit")
         choice = input("Enter your choice: ")
 
         if choice == "1":
             player.is_attacking(enemy)
-            print(f"{player.name} attacks {enemy.name} for {player.attack} damage! Your HP: {enemy.health}")
+            print(f"{player.name} attacks {enemy.name} for {player.attack} damage! Enemy HP: {enemy.health}")
         elif choice == "2":
+            ability_choice = player.ability()
+            player.use_ability(ability_choice, enemy)
+        elif choice == "3":
             player.show_inventory()
             item_name = input("Enter item name: ")
             player.use_item(item_name)
-        elif choice == "3":
-            player.show_inventory()
         elif choice == "4":
+            player.show_inventory()
+            continue
+        elif choice == "5":
             break
         else:
             print("Invalid choice")
