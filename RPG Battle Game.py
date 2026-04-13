@@ -1,3 +1,5 @@
+# need to add ability for each class
+
 import random
 
 REWARDS = [
@@ -52,7 +54,7 @@ class Warrior(Character):
     def ability(self):
         print("1. Slash")
         print("2. Bash")
-        choice = input("Choice your attack")
+        choice = input("Choice your attack: ")
         return choice
 
     def use_ability(self, choice, target):
@@ -73,7 +75,7 @@ class Mage(Character):
     def ability(self):
         print("1. Fireball")
         print("2. Waterball")
-        choice = input("Choice your attack")
+        choice = input("Choice your attack: ")
         return choice
 
     def use_ability(self, choice, target):
@@ -101,7 +103,7 @@ class Archer(Character):
     def ability(self):
         print("1. Power shot")
         print("2. Mult shot")
-        choice = input("Choice your attack")
+        choice = input("Choice your attack: ")
         return choice
 
     def use_ability(self, choice, target):
