@@ -1,5 +1,3 @@
-# need to add ability for each class
-
 import random
 
 REWARDS = [
