@@ -12,9 +12,6 @@ class Account:
         else:
             self.balance -= amount
 
-    def transfer(self, amount):
-
-
     def print_info(self):
         print(f"Owner: {self.owner} | Balance: €{self.balance:.2f}")
 
@@ -42,6 +39,15 @@ class CheckAccount(Account):
         else:
             self.balance -= amount
 
+    def transfer(self, amount, target_account):
+        if amount > self.balance + self.overdraft_limit:
+            print("Exceeds overdraft limit — transfer failed!")
+        else:
+            self.balance -= amount
+            target_account.deposit(amount)
+            print(f"€{amount:.2f} transferred to {target_account.owner}'s account.")
+
+
     def print_info(self):
         print(f"Owner: {self.owner} | Balance: €{self.balance:.2f} | Overdraft Limit: €{self.overdraft_limit:.2f}")
 
@@ -51,6 +57,7 @@ checking = CheckAccount("Abdul", 50, 100)
 savings.deposit(500)
 savings.apply_interest()
 checking.withdraw(120)
+checking.transfer(30, savings)
 
 savings.print_info()
 checking.print_info()
