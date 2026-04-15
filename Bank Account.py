@@ -12,6 +12,9 @@ class Account:
         else:
             self.balance -= amount
 
+    def transfer(self, amount):
+
+
     def print_info(self):
         print(f"Owner: {self.owner} | Balance: €{self.balance:.2f}")
 
