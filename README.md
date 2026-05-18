@@ -1,4 +1,4 @@
-# 💻 Programming Portfolio — Abdul Raqeeb Lafiaji
+# 💻 Programming Portfolio — Abdul
 
 A collection of Python and Java projects built while studying Computing at **Technological University Dublin (TU Dublin)**. Projects focus on object-oriented programming applied to real use cases.
 
@@ -25,20 +25,24 @@ A collection of Python and Java projects built while studying Computing at **Tec
 
 | Project | Description | Key Concepts |
 |---|---|---|
-| 🏦 **Bank Account** | Savings and checking accounts built in Java with deposit, withdrawal, interest, and overdraft logic | Classes, inheritance, `super()`, encapsulation |
-| 🗡️ **RPG Battle Game** | Turn-based RPG combat rebuilt in Java with character classes, enemy progression, and battle mechanics | Inheritance, method overriding, OOP design |
+| 🗡️ **RPG Battle Game** | Fully featured turn-based RPG with 3 playable classes, status effects, boss battles, shop system, item drops, and save/load | Abstract classes, inheritance, polymorphism, File I/O, ArrayLists |
+| 🏦 **Bank Account System** | Savings and current accounts with deposits, withdrawals, transfers, overdraft protection and interest | Abstract classes, inheritance, polymorphism, ArrayLists |
+| 🛒 **Supermarket Checkout** | Console-based checkout system with basket management, barcode scanning, discount codes and totals | Classes, ArrayLists, boolean returns, Scanner |
 
 ---
 
 ## 🧠 Concepts Covered
 
 - Object-Oriented Programming (classes, objects, constructors)
-- Inheritance & subclasses
-- Method overriding & `super()`
-- Encapsulation
-- Input validation & error handling
-- Game loops & state management
-- `__str__` / `toString()` and other core methods
+- Inheritance, subclasses and abstract classes
+- Method overriding with `@Override`
+- Polymorphism and `instanceof` checks
+- Encapsulation — `protected`, `private`, getters
+- ArrayLists and dynamic data management
+- File I/O — save and load with `FileWriter` and `Scanner`
+- Input validation and error handling
+- Game loops and state management
+- Switch expressions and recursion
 
 ---
 
@@ -58,9 +62,9 @@ python python/"RPG Battle Game 2.py"
 
 **Java** — compile and run:
 ```bash
-cd Java
-javac BankAccount.java
-java BankAccount
+cd JavaProjects/RPGGame/src
+javac *.java
+java Main
 ```
 
 ---
